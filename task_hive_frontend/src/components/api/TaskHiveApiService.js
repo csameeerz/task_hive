@@ -1,10 +1,4 @@
-import axios from "axios";
-
-const apiClient = axios.create(
-    {
-        baseURL: 'http://localhost:8080'
-    }
-);
+import { apiClient } from "./ApiClient";
 
 export const getTasksByUsernameApi
                 = (username) => apiClient.get(`/users/${username}/tasks`);
@@ -20,3 +14,10 @@ export const updateTaskByIdApi
 
 export const createTaskApi
                 = (username, task) => apiClient.post(`/users/${username}/tasks`, task);
+
+export const basicAuthExecution
+                = (token) => apiClient.get(`/basicAuth`, {
+                    headers: {
+                        Authorization: token
+                    }
+                }); 

@@ -14,6 +14,11 @@ public class TaskController {
         this.taskService = taskService;
     }
 
+    @GetMapping("/basicAuth")
+    public String basicAuthentication() {
+        return "Success";
+    }
+
     @GetMapping("/users/{username}/tasks")
     public List<Task> getTasksByUsername(@PathVariable String username) {
         return taskService.findByUsername(username);

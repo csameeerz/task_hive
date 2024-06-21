@@ -3,11 +3,11 @@ import { useState } from 'react';
 import { useAuth } from './security/AuthContext';
 
 export default function LoginComponent() {
-    const [username, setUsername] = useState('csameeerz');
+    const authContext = useAuth();
+    const [username, setUsername] = useState(authContext.username);
     const [password, setPassword] = useState('');
     const [showFailedMessage, setShowFailedMessage] = useState(false);
     const navigate = useNavigate();
-    const authContext = useAuth();
 
     function handleUsernameChange(event) {
         setUsername(event.target.value);

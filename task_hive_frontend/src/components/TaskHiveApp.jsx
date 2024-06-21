@@ -4,6 +4,7 @@ import ShowTasksComponent from './ShowTasksComponent.jsx';
 import ErrorComponent from './ErrorComponent.jsx';
 import WelcomeComponent from './WelcomeComponent.jsx';
 import LoginComponent from './LoginComponent.jsx';
+import TaskComponent from './TaskComponent.jsx';
 import AuthProvider, { useAuth } from './security/AuthContext';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './TaskHiveApp.css';
@@ -29,6 +30,7 @@ export default function TaskHiveApp() {
                         <Route path='/login' element={ <LoginComponent />} />
                         <Route path='/welcome/:username' element={ <LoggedInRoute><WelcomeComponent /></LoggedInRoute> } />
                         <Route path='/tasks' element={ <LoggedInRoute><ShowTasksComponent /></LoggedInRoute> } />
+                        <Route path='/task/:id' element={ <LoggedInRoute><TaskComponent /></LoggedInRoute> } />
                         <Route path='/logout' element={ <LoggedInRoute><LogoutComponent /></LoggedInRoute> } />
                         <Route path='*' element={ <ErrorComponent />} />
                     </Routes>

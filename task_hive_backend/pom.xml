@@ -8,11 +8,11 @@
 		<version>3.0.0-M4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.in28minutes.rest.webservices</groupId>
+	<groupId>com.taskhive.rest.webservices</groupId>
 	<artifactId>restful-web-services</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>restful-web-services</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Task Hive RESTful Application</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

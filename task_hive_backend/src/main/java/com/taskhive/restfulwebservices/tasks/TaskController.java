@@ -8,10 +8,11 @@ import java.util.List;
 @RestController
 public class TaskController {
 
-    private TaskService taskService;
 
-    public TaskController(TaskService taskService) {
-        this.taskService = taskService;
+    private TaskRepository taskRepository;
+
+    public TaskController(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
     }
 
     @GetMapping("/basicAuth")
@@ -21,29 +22,29 @@ public class TaskController {
 
     @GetMapping("/users/{username}/tasks")
     public List<Task> getTasksByUsername(@PathVariable String username) {
-        return taskService.findByUsername(username);
+        return taskRepository.findByUsername(username);
     }
 
     @GetMapping("/users/{username}/tasks/{id}")
     public Task getTaskById(@PathVariable String username, @PathVariable int id) {
-        return taskService.findById(id);
+        return taskRepository.findById(id).get();
     }
 
     @DeleteMapping("/users/{username}/tasks/{id}")
     public ResponseEntity<Void> deleteTaskById(@PathVariable String username, @PathVariable int id) {
-        taskService.deleteById(id);
+        taskRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping("/users/{username}/tasks/{id}")
     public Task updateTaskById(@PathVariable String username, @PathVariable int id, @RequestBody Task task) {
-        taskService.updateTask(task);
-        return task;
+        return taskRepository.save(task);
     }
 
     @PostMapping("/users/{username}/tasks")
     public Task createTask(@PathVariable String username, @RequestBody Task task) {
-        Task createdTask = taskService.addTask(username, task.getDescription(), task.getTargetDate(), task.isCompleted());
-        return createdTask;
+        task.setUsername(username);
+        task.setId(null);
+        return taskRepository.save(task);
     }
 }

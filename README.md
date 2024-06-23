@@ -1,5 +1,5 @@
 # Task Hive Application for Personal Use
- You can make tasks, modify them and keep track of them to be more productive.
+ You can make new tasks, modify them and keep track of them to be more productive.
   
 **Backend:**
   - **Java:** The programming language for the backend.
